@@ -1,0 +1,67 @@
+package vowels_and_Consonants;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Vowels_and_Consonants {
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		String str;
+		char userChoice;
+		Scanner kb = new Scanner(System.in);
+		
+		System.out.println("Enter the string to test: ");
+		str = kb.nextLine();
+		
+		VowsAndCons sounds = new VowsAndCons(str);
+		
+		displayMenu();
+		userChoice = Character.toLowerCase(kb.nextLine().charAt(0));
+		while(userChoice != 'e'){
+			switch(userChoice){
+			case 'a': System.out.println("The number of vowels in this string is: " + sounds.numVowels());
+					  break;
+			case 'b': System.out.println("The number of consonants in this string is: " + sounds.numConsonants());
+					  break;
+			case 'c': System.out.println("The number of vowels in this string is: " + sounds.numVowels());
+					  System.out.println("The number of consonants in this string is: " + sounds.numConsonants());
+					  break;
+			case 'd': System.out.println("Enter another string to test: ");
+					  str = kb.nextLine();
+					  sounds.setString(str);
+					  break;
+			
+			default:  System.out.println("This is not a valid choice. Select the item from the menu:");
+					  userChoice = kb.nextLine().charAt(0);
+					  while(userChoice != 'a' && userChoice != 'b' && userChoice != 'c'
+							  && userChoice != 'd' && userChoice != 'e'){
+						  //System.out.println("This is not a valid choice. Select the item from the menu:");
+						  userChoice = kb.nextLine().charAt(0);
+					  }
+					  break;
+					  
+					  
+			}
+			displayMenu();
+			userChoice = Character.toLowerCase(kb.nextLine().charAt(0));
+		}
+		System.out.println("I am exiting... see you later!");
+		kb.close();
+		System.exit(0);
+		
+	}
+	
+	
+	public static void displayMenu(){
+		System.out.println("Select item from the menu:\n");
+		System.out.println("a. Count the number of vowels in the string");
+		System.out.println("b. Count the number of consonants in the string");
+		System.out.println("c. Count both the vowels and consonants in the string");
+		System.out.println("d. Enter another string");
+		System.out.println("e. Exit the program");
+	}
+	
+	
+
+}
+
